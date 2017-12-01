@@ -22,22 +22,11 @@ class DayOneExtra extends DayOne
     }
 
     /**
-     * @param string $input
+     * @param array $array
      * @return int
      */
-    protected function calculate(string $input) : int
+    protected function findIndex(array $array) : int
     {
-        $array = array_map('intval', str_split($input));
-        $sum = $i = 0;
-        do {
-            $new_last = array_shift($array);
-            $array[] = $new_last;
-            $array = array_values($array);
-            if ($array[0] === $array[(int) round(count($array)/2)]) {
-                $sum += $array[0];
-            }
-            $i++;
-        } while ($i < count($array));
-        return $sum;
+        return (int) round(count($array)/2);
     }
 }

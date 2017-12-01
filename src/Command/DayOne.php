@@ -39,18 +39,25 @@ class DayOne extends Command
     protected function calculate(string $input) : int
     {
         $array = array_map('intval', str_split($input));
-        $sum = 0;
-        for ($i = 0; $i < count($array); $i++)
-        {
-            if ($i === 0) {
-                $previous = $array[count($array) - 1];
-            } else {
-                $previous = $array[$i - 1];
+        $sum = $i = 0;
+        do {
+            $new_last = array_shift($array);
+            $array[] = $new_last;
+            $array = array_values($array);
+            if ($array[0] === $array[$this->findIndex($array)]) {
+                $sum += $array[0];
             }
-            if ($previous === $array[$i]) {
-                $sum += $array[$i];
-            }
-        }
+            $i++;
+        } while ($i < count($array));
         return $sum;
+    }
+
+    /**
+     * @param array $array
+     * @return int
+     */
+    protected function findIndex(array $array) : int
+    {
+        return 1;
     }
 }
