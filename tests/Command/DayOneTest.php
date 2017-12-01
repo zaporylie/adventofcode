@@ -15,8 +15,10 @@ class DayOneTest extends KernelTestCase
 {
     /**
      * Tests command execution.
+     *
+     * @dataProvider getValidTestData
      */
-    public function testExecute()
+    public function testExecute($input, $output)
     {
         $kernel = self::bootKernel();
         $application = new Application($kernel);
@@ -25,25 +27,18 @@ class DayOneTest extends KernelTestCase
 
         $command = $application->find('app:day:one');
         $commandTester = new CommandTester($command);
+        $commandTester->execute(['input' => $input]);
+        $this->assertEquals($output, $commandTester->getDisplay());
+    }
 
-        // Test example 1.
-        $commandTester->execute(['input' => 1122]);
-        $output = $commandTester->getDisplay();
-        $this->assertEquals('3', $output);
-
-        // Test example 2.
-        $commandTester->execute(['input' => 1111]);
-        $output = $commandTester->getDisplay();
-        $this->assertEquals('4', $output);
-
-        // Test example 3.
-        $commandTester->execute(['input' => 1234]);
-        $output = $commandTester->getDisplay();
-        $this->assertEquals('0', $output);
-
-        // Test example 4.
-        $commandTester->execute(['input' => 91212129]);
-        $output = $commandTester->getDisplay();
-        $this->assertEquals('9', $output);
+    /**
+     * Valid test data.
+     */
+    public function getValidTestData()
+    {
+        yield ['1122', '3'];
+        yield ['1111', '4'];
+        yield ['1234', '0'];
+        yield ['91212129', '9'];
     }
 }
