@@ -46,6 +46,8 @@ class <?= $command_extra_class_name ?> extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->write($this->service->executeExtra());
+        $io = new SymfonyStyle($input, $output);
+        $answer = $this->service->executeExtra(); // @todo: Provide input.
+        $io->success($answer);
     }
 }

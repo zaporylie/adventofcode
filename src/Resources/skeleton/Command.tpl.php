@@ -46,6 +46,8 @@ class <?= $command_class_name ?> extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->write($this->service->execute());
+        $io = new SymfonyStyle($input, $output);
+        $answer = $this->service->execute(); // @todo: Provide input.
+        $io->success($answer);
     }
 }
