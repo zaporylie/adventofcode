@@ -35,7 +35,7 @@ class <?= $command_class_name ?> extends Command
     protected function configure()
     {
         $this
-            // ->addArgument('input', InputArgument::REQUIRED);
+            // ->addArgument('input', InputArgument::REQUIRED | InputArgument::IS_ARRAY)
             // ->addArgument('filepath')
             // ->addOption('input', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Provide data directly')
             ->setDescription('Runs <?= $ordinal ?> task.');
