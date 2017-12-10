@@ -3,6 +3,7 @@
 namespace App\Tests\Command;
 
 use App\Command\DayOneExtraCommand;
+use App\Utils\DayOneService;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -23,7 +24,7 @@ class DayOneExtraCommandTest extends KernelTestCase
         $kernel = self::bootKernel();
         $application = new Application($kernel);
 
-        $application->add(new DayOneExtraCommand());
+        $application->add(new DayOneExtraCommand(new DayOneService()));
 
         $command = $application->find('app:day:one:extra');
         $commandTester = new CommandTester($command);

@@ -3,6 +3,8 @@
 namespace App\Command;
 
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class DayOneExtra
@@ -10,23 +12,23 @@ use Symfony\Component\Console\Input\InputArgument;
  */
 class DayOneExtraCommand extends DayOneCommand
 {
+
+    protected static $defaultName = 'app:day:one:extra';
     /**
      * {@inheritdoc}
      */
     protected function configure()
     {
         $this
-            ->setName('app:day:one:extra')
             ->setDescription('Runs first extra task')
             ->addArgument('input', InputArgument::REQUIRED);
     }
 
     /**
-     * @param array $array
-     * @return int
+     * {@inheritdoc}
      */
-    protected function findIndex(array $array) : int
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
-        return (int) round(count($array)/2);
+        $output->write($this->service->executeExtra($input->getArgument('input')));
     }
 }
