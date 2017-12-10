@@ -7,19 +7,19 @@ class <?= $service_class_name ?>
 {
 
     /**
-     * @param array $input
+     * @param string $input
      * @return int
      */
-    public function execute(array $input) : int
+    public function execute(string $input) : int
     {
         throw new \Exception('Missing implementation');
     }
 
     /**
-     * @param array $input
+     * @param string $input
      * @return int
      */
-    public function executeExtra(array $input) : int
+    public function executeExtra(string $input) : int
     {
         throw new \Exception('Missing implementation');
     }

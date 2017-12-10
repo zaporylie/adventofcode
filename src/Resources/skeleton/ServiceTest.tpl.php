@@ -14,12 +14,12 @@ class <?= $service_test_class_name ?> extends TestCase
     /**
      * Tests day <?= $number ?> task.
      *
-     * @param array $input
+     * @param string $input
      * @param int $expected
      *
      * @dataProvider validData
      */
-    public function testExecute(array $input, int $expected)
+    public function testExecute(string $input, int $expected)
     {
         $service = new <?= $service_class_name ?>();
         $this->assertEquals($expected, $service->execute($input));
@@ -32,18 +32,18 @@ class <?= $service_test_class_name ?> extends TestCase
      */
     public function validData()
     {
-        yield [[], 0];
+        yield ['', 0];
     }
 
     /**
      * Tests day <?= $number ?> extra task.
      *
-     * @param array $input
+     * @param string $input
      * @param int $expected
      *
      * @dataProvider validExtraData
      */
-    public function testExecuteExtra(array $input, int $expected)
+    public function testExecuteExtra(string $input, int $expected)
     {
         $service = new <?= $service_class_name ?>();
         $this->assertEquals($expected, $service->executeExtra($input));
@@ -56,7 +56,7 @@ class <?= $service_test_class_name ?> extends TestCase
      */
     public function validExtraData()
     {
-        yield [[], 0];
+        yield ['', 0];
     }
 
 }
