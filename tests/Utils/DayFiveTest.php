@@ -2,7 +2,7 @@
 
 namespace App\Tests\Utils;
 
-use App\Utils\DayFive;
+use App\Utils\DayFiveService;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,7 +22,7 @@ class DayFiveTest extends TestCase
      */
     public function testLine(array $line, int $number_of_steps, callable $processor = null)
     {
-        $service = new DayFive();
+        $service = new DayFiveService();
         $this->assertEquals($number_of_steps, $service->processLine($line, $processor));
     }
 
@@ -34,8 +34,8 @@ class DayFiveTest extends TestCase
     public function validData()
     {
         yield [[0, 3,  0, 1, -3], 5];
-        yield [[0, 3,  0, 1, -3], 5, [DayFive::class, 'increaseByOne']];
-        yield [[0, 3,  0, 1, -3], 10, [DayFive::class, 'decreaseByOneIfMoreEqualThanThree']];
+        yield [[0, 3,  0, 1, -3], 5, [DayFiveService::class, 'increaseByOne']];
+        yield [[0, 3,  0, 1, -3], 10, [DayFiveService::class, 'decreaseByOneIfMoreEqualThanThree']];
     }
 
 }

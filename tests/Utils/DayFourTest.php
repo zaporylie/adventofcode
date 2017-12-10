@@ -2,7 +2,7 @@
 
 namespace App\Tests\Utils;
 
-use App\Utils\DayFour;
+use App\Utils\DayFourService;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -21,7 +21,7 @@ class DayFourTest extends TestCase
      */
     public function testDuplicates(string $passphrase, bool $has_duplicates)
     {
-        $service = new DayFour();
+        $service = new DayFourService();
         $this->assertEquals($has_duplicates, $service->hasDuplicates($passphrase));
     }
 
@@ -35,7 +35,7 @@ class DayFourTest extends TestCase
      */
     public function testAnagrams(string $passphrase, bool $has_anagrams)
     {
-        $service = new DayFour();
+        $service = new DayFourService();
         $this->assertEquals($has_anagrams, $service->hasAnagrams($passphrase));
     }
 

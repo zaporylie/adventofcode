@@ -2,7 +2,7 @@
 
 namespace App\Utils;
 
-class DayThree
+class DayThreeService
 {
     /**
      * @var array
@@ -116,7 +116,7 @@ class DayThree
     /**
      * @param MatrixAddress $coordinates
      * @param int $value
-     * @return DayThree
+     * @return DayThreeService
      */
     protected function setMatrixValue(MatrixAddress $coordinates, int $value) : self
     {

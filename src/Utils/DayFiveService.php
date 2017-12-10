@@ -2,7 +2,7 @@
 
 namespace App\Utils;
 
-class DayFive
+class DayFiveService
 {
     /**
      * @param array $line

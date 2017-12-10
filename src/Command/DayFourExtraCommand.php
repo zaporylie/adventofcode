@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
-use App\Utils\DayFour as DayFourService;
+use App\Utils\DayFourService as DayFourService;
 
 /**
  * Class DayFourExtra
@@ -18,7 +18,7 @@ use App\Utils\DayFour as DayFourService;
 class DayFourExtraCommand extends Command
 {
     /**
-     * @var \App\Utils\DayFour
+     * @var \App\Utils\DayFourService
      */
     protected $dayFour;
 

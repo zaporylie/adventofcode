@@ -2,7 +2,7 @@
 
 namespace App\Utils;
 
-class DayFour
+class DayFourService
 {
     /**
      * @param string $input

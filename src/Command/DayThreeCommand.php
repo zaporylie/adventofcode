@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
-use App\Utils\DayThree as DayThreeService;
+use App\Utils\DayThreeService as DayThreeService;
 
 /**
  * Class DayThree
@@ -18,7 +18,7 @@ use App\Utils\DayThree as DayThreeService;
 class DayThreeCommand extends Command
 {
     /**
-     * @var \App\Utils\DayThree
+     * @var \App\Utils\DayThreeService
      */
     protected $service;
 

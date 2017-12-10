@@ -2,7 +2,7 @@
 
 namespace App\Tests\Utils;
 
-use App\Utils\DayThree;
+use App\Utils\DayThreeService;
 use PHPUnit\Framework\TestCase;
 
 class DayThreeTest extends TestCase
@@ -17,7 +17,7 @@ class DayThreeTest extends TestCase
      */
     public function testDistance(int $number, $distance)
     {
-        $service = new DayThree();
+        $service = new DayThreeService();
         $service->fillMatrix($number);
         $this->assertEquals($distance, $service->getDistance($number));
     }
@@ -30,7 +30,7 @@ class DayThreeTest extends TestCase
      */
     public function testExtra(int $provided, $written)
     {
-        $service = new DayThree();
+        $service = new DayThreeService();
         $this->assertEquals($written, $service->fillMatrixExtra($provided));
     }
 
