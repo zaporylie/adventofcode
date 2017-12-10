@@ -15,16 +15,16 @@ use App\Utils\DayThree as DayThreeService;
  * Class DayThree
  * @package App\Command
  */
-class DayThree extends Command
+class DayThreeCommand extends Command
 {
     /**
      * @var \App\Utils\DayThree
      */
-    protected $dayThree;
+    protected $service;
 
     public function __construct(DayThreeService $dayThree)
     {
-        $this->dayThree = $dayThree;
+        $this->service = $dayThree;
         parent::__construct();
     }
 
@@ -44,11 +44,11 @@ class DayThree extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->dayThree->fillMatrix($input->getArgument('number'));
+        $this->service->fillMatrix($input->getArgument('number'));
         if ($output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE) {
             $this->printMatrix($output);
         }
-        $output->write($this->dayThree->getDistance($input->getArgument('number')));
+        $output->write($this->service->getDistance($input->getArgument('number')));
     }
 
     /**
@@ -58,7 +58,7 @@ class DayThree extends Command
      */
     protected function printMatrix(OutputInterface $output) : void
     {
-        $matrix = $this->dayThree->getMatrix();
+        $matrix = $this->service->getMatrix();
         $leftpad = strlen((string) pow(count($matrix), 2));
         for ($i = min(array_keys($matrix)); $i <= max(array_keys($matrix)); $i++) {
             for ($j = min(array_keys($matrix[$i])); $j < max(array_keys($matrix[$i])); $j++) {

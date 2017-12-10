@@ -12,10 +12,10 @@ use Symfony\Component\Finder\Finder;
 use App\Utils\DayFour as DayFourService;
 
 /**
- * Class DayFour
+ * Class DayFourExtra
  * @package App\Command
  */
-class DayFour extends Command
+class DayFourExtraCommand extends Command
 {
     /**
      * @var \App\Utils\DayFour
@@ -34,8 +34,8 @@ class DayFour extends Command
     protected function configure()
     {
         $this
-          ->setName('app:day:four')
-          ->setDescription('Runs fourth task')
+          ->setName('app:day:four:extra')
+          ->setDescription('Runs fourth extra task')
             ->addArgument('filepath')
             ->addOption('input', null, InputOption::VALUE_OPTIONAL, 'Provide data directly');
     }
@@ -58,7 +58,7 @@ class DayFour extends Command
             if (empty($string)) {
                 continue;
             }
-            $sum += (int) !$this->dayFour->hasDuplicates($string);
+            $sum += (int) !$this->dayFour->hasAnagrams($string);
         };
         $output->write($sum);
     }

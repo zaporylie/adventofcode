@@ -8,7 +8,7 @@ use Symfony\Component\Console\Input\InputOption;
  * Class DayTwoExtra
  * @package App\Command
  */
-class DayTwoExtra extends DayTwo
+class DayTwoExtraCommand extends DayTwoCommand
 {
     /**
      * {@inheritdoc}

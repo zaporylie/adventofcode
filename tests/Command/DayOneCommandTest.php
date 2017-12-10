@@ -2,16 +2,16 @@
 
 namespace App\Tests\Command;
 
-use App\Command\DayTwo;
+use App\Command\DayOneCommand;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
 /**
- * Class DayTwoTest
+ * Class DayOneTest
  * @package App\Tests\Command
  */
-class DayTwoTest extends KernelTestCase
+class DayOneCommandTest extends KernelTestCase
 {
     /**
      * Tests command execution.
@@ -23,11 +23,11 @@ class DayTwoTest extends KernelTestCase
         $kernel = self::bootKernel();
         $application = new Application($kernel);
 
-        $application->add(new DayTwo());
+        $application->add(new DayOneCommand());
 
-        $command = $application->find('app:day:two');
+        $command = $application->find('app:day:one');
         $commandTester = new CommandTester($command);
-        $commandTester->execute(['--input' => $input]);
+        $commandTester->execute(['input' => $input]);
         $this->assertEquals($output, $commandTester->getDisplay());
     }
 
@@ -36,10 +36,9 @@ class DayTwoTest extends KernelTestCase
      */
     public function getValidTestData()
     {
-        yield [[
-            [5, 1, 9, 5],
-            [7, 5, 3],
-            [2, 4, 6, 8],
-        ], 18];
+        yield ['1122', '3'];
+        yield ['1111', '4'];
+        yield ['1234', '0'];
+        yield ['91212129', '9'];
     }
 }

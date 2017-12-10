@@ -15,7 +15,7 @@ use App\Utils\DayFive as DayFiveService;
  * Class DayFive
  * @package App\Command
  */
-class DayFiveExtra extends Command
+class DayFiveCommand extends Command
 {
     /**
      * @var \App\Utils\DayFive
@@ -34,8 +34,8 @@ class DayFiveExtra extends Command
     protected function configure()
     {
         $this
-          ->setName('app:day:five:extra')
-          ->setDescription('Runs fifth extra task')
+          ->setName('app:day:five')
+          ->setDescription('Runs fifth task')
           ->addArgument('filepath')
           ->addOption('input', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Provide data directly');
     }
@@ -54,7 +54,7 @@ class DayFiveExtra extends Command
         } else {
             throw new \InvalidArgumentException('Missing input');
         }
-        $output->write($this->dayFive->processLine($data, [DayFiveService::class, 'decreaseByOneIfMoreEqualThanThree']));
+        $output->write($this->dayFive->processLine($data));
     }
 
 }

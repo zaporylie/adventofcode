@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * Class DayOne
  * @package App\Command
  */
-class DayOne extends Command
+class DayOneCommand extends Command
 {
     /**
      * {@inheritdoc}
