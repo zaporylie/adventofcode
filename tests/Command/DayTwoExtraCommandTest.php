@@ -3,6 +3,7 @@
 namespace App\Tests\Command;
 
 use App\Command\DayTwoExtraCommand;
+use App\Utils\DayTwoService;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -23,7 +24,7 @@ class DayTwoExtraCommandTest extends KernelTestCase
         $kernel = self::bootKernel();
         $application = new Application($kernel);
 
-        $application->add(new DayTwoExtraCommand());
+        $application->add(new DayTwoExtraCommand(new DayTwoService()));
 
         $command = $application->find('app:day:two:extra');
         $commandTester = new CommandTester($command);
@@ -36,10 +37,8 @@ class DayTwoExtraCommandTest extends KernelTestCase
      */
     public function getValidTestData()
     {
-        yield [[
-            [5, 9, 2, 8],
-            [9, 4, 7, 3],
-            [3, 8, 6, 5],
-        ], 9];
+        yield ["5\t9\t2\t8
+9\t4\t7\t3
+3\t8\t6\t5", 9];
     }
 }

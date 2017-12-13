@@ -2,7 +2,9 @@
 
 namespace App\Command;
 
+use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class DayTwoExtra
@@ -10,35 +12,33 @@ use Symfony\Component\Console\Input\InputOption;
  */
 class DayTwoExtraCommand extends DayTwoCommand
 {
+    protected static $defaultName = 'app:day:two:extra';
+
     /**
      * {@inheritdoc}
      */
     protected function configure()
     {
         $this
-          ->setName('app:day:two:extra')
           ->setDescription('Runs second extra task')
           ->addArgument('filepath')
           ->addOption('input', null, InputOption::VALUE_OPTIONAL, 'Provide data directly');
     }
 
+
     /**
-     * @param array $line
-     * @return int
+     * {@inheritdoc}
      */
-    protected function getLineChecksum(array $line) : int
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
-        for ($i = 0; $i < count($line); $i++) {
-            for ($j = 0; $j < count($line); $j++) {
-                if ($i === $j) {
-                    continue;
-                }
-                if (!($line[$i] % $line[$j])) {
-                    return $line[$i] / $line[$j];
-                }
-            }
+        if ($filepath = $input->getArgument('filepath')) {
+            $data = file_get_contents($filepath);
+        } elseif ($data = $input->getOption('input')) {
+            // Use data directly.
+        } else {
+            throw new \InvalidArgumentException('Missing input');
         }
-        throw new \LogicException('Unable to find evenly divisible values.');
+        $output->write($this->service->executeExtra($data));
     }
 
 }
