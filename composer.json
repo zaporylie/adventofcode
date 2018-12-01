@@ -1,0 +1,19 @@
+{
+    "name": "zaporylie/adventofcode",
+    "require": {
+        "symfony/console": "^4.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "zaporylie\\adventofcode\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "zaporylie\\adventofcode\\Tests\\": "tests/src/"
+        }
+    }
+}
